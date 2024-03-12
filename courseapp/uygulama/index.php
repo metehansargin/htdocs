@@ -10,24 +10,27 @@ $kurslar=array(
     "altbaslik"=>"Sıfırdan ileri php programlama",
     "resim"=>"1.jpg",
     "yayınTarihi"=>"01.01.2023",
-    "yorum"=>"100",
-    "begeni"=>"300"
+    "yorum"=>0,
+    "begeni"=>10,
+    "onay"=>true
 ),
 "2"=>array(
     "baslik"=>"python kursu",
     "altbaslik"=>"Sıfırdan ileri python programlama",
     "resim"=>"2.jpg",
     "yayınTarihi"=>"03.03.2023",
-    "yorum"=>"200",
-    "begeni"=>"400"
+    "yorum"=>10,
+    "begeni"=>0,
+    "onay"=>false
 ),
 "3"=>array(
     "baslik"=>"Node.js kursu",
     "altbaslik"=>"Sıfırdan ileri Node.js programlama",
     "resim"=>"3.jpg",
     "yayınTarihi"=>"05.05.2023",
-    "yorum"=>"300",
-    "begeni"=>"300"
+    "yorum"=>10,
+    "begeni"=>20,
+    "onay"=>true
 )
 
 
@@ -37,8 +40,9 @@ $yenifilm=array(
     "altbaslik"=>"Sıfırdan ileri Django programlama",
     "resim"=>"3.jpg",
     "yayınTarihi"=>"02.02.2023",
-    "yorum"=>"100",
-    "begeni"=>"100"
+    "yorum"=>0,
+    "begeni"=>0,
+    "onay"=>false
 );
 $kurslar["4"]=$yenifilm;
 
@@ -67,9 +71,9 @@ $kurs1_altbaslik=ucfirst(strtolower($kurslar["1"]["altbaslik"]));
 $kurs2_altbaslik=ucfirst(strtolower($kurslar["2"]["altbaslik"]));
 $kurs3_altbaslik=ucfirst(strtolower($kurslar["3"]["altbaslik"]));
 
-$kurs1_altbaslik=substr($kurs1_altbaslik,0,30)."...";
-$kurs2_altbaslik=substr($kurs2_altbaslik,0,30)."...";
-$kurs3_altbaslik=substr($kurs3_altbaslik,0,30)."...";
+// $kurs1_altbaslik=substr($kurs1_altbaslik,0,30)."...";
+// $kurs2_altbaslik=substr($kurs2_altbaslik,0,30)."...";
+// $kurs3_altbaslik=substr($kurs3_altbaslik,0,30)."...";
 
 $kurs1_url=str_replace([" ",""],["-"],strtolower($kurslar["1"]["baslik"]));
 $kurs2_url=str_replace([" ",""],["-"],strtolower($kurslar["2"]["baslik"]));
@@ -109,8 +113,10 @@ $kurs3_url=str_replace([" ",""],["-"],strtolower($kurslar["3"]["baslik"]));
                      <p class="lead">
                         <?php echo count($kategoriler);?> Kategoride <?php echo count($kurslar);?> Kurs listelenmiştir    
                      </p>
+                     
+    <?php  if($kurslar["1"]["onay"]):?>
 
-            <div class="card mb-3">
+        <div class="card mb-3">
                 <div class="row">
                 <div class="col-4">
                     <img src="img/<?php echo $kurslar["1"]["resim"] ;?>" alt=""  class="img-fluid rounded-start">
@@ -121,22 +127,40 @@ $kurs3_url=str_replace([" ",""],["-"],strtolower($kurslar["3"]["baslik"]));
                             <a href="<?php echo $kurs1_url;?>">
                             <?php echo $kurs1_altbaslik;?>
                         </a>
-                        <p class="card-text"><?php echo $kurslar["1"]["altbaslik"];?></p>
+
+                        <p class="card-text">
+                            <?php if(strlen($kurslar["1"]["altbaslik"])>50): ?>
+                                <?php substr($kurslar["1"]["altbaslik"],0,50);?>
+                                <?php else:?>
+                            <?php echo $kurslar["1"]["altbaslik"];?>
+                            <?php endif?>
+                        </p>
                         <p>
+                            <?php if($kurslar["1"]["begeni"]>0): ?>
                             <span class="badge rounded-pill text-bg-primary">
                                 <?php echo $kurslar["1"]["begeni"] ;?>
                          </span>
+                         <?php endif?>
+                         <?php if($kurslar["1"]["yorum"]>0): ?>
                          <span class="badge rounded-pill text-bg-primary">
                                 <?php echo $kurslar["1"]["yorum"] ;?>
                                 
                             </span>
+                            <?php else:?>
+                                <span class="badge rounded-pill text-bg-warning">
+                               ilk yorumu sen yap
+                                
+                            </span> 
+                            <?php endif?>
                         </p>
                     
                     </div>
                 </div>
                 </div>
             </div>
-            <div class="card mb-3">
+        <?php endif?>
+            <?php if($kurslar["2"]["onay"]):?>
+                <div class="card mb-3">
                 <div class="row">
                 <div class="col-4">
                     <img src="img/<?php echo $kurslar["2"]["resim"] ;?>" alt=""  class="img-fluid rounded-start">
@@ -147,22 +171,40 @@ $kurs3_url=str_replace([" ",""],["-"],strtolower($kurslar["3"]["baslik"]));
                             <a href="<?php echo $kurs1_url;?>">
                             <?php echo $kurs1_altbaslik;?>
                         </a>
-                        <p class="card-text"><?php echo $kurslar["2"]["altbaslik"];?></p>
+                        <p class="card-text">
+                        <?php if(strlen($kurslar["2"]["altbaslik"])>50): ?>
+                                <?php substr($kurslar["2"]["altbaslik"],0,50);?>
+                                <?php else:?>
+                            <?php echo $kurslar["2"]["altbaslik"];?>
+                            <?php endif ?>
+                        </p>
                         <p>
+                            <?php if($kurslar["2"]["begeni"]>0): ?>
                             <span class="badge rounded-pill text-bg-primary">
                                 <?php echo $kurslar["2"]["begeni"] ;?>
                          </span>
+                         <?php endif?>
+                         <?php if($kurslar["2"]["yorum"]>0): ?>
                          <span class="badge rounded-pill text-bg-primary">
                                 <?php echo $kurslar["2"]["yorum"] ;?>
                                 
                             </span>
+                            <?php else:?>
+                                <span class="badge rounded-pill text-bg-warning">
+                               ilk yorumu sen yap
+                                
+                            </span> 
+                            <?php endif ?>
                         </p>
                     
                     </div>
                 </div>
                 </div>
             </div>
-            <div class="card mb-3">
+                <?php endif?>
+            
+                <?php if($kurslar["3"]["onay"]): ?>
+                     <div class="card mb-3">
                 <div class="row">
                 <div class="col-4">
                     <img src="img/<?php echo $kurslar["3"]["resim"] ;?>" alt=""  class="img-fluid rounded-start">
@@ -173,22 +215,39 @@ $kurs3_url=str_replace([" ",""],["-"],strtolower($kurslar["3"]["baslik"]));
                             <a href="<?php echo $kurs1_url;?>">
                             <?php echo $kurs1_altbaslik;?>
                         </a>
-                        <p class="card-text"><?php echo $kurslar["3"]["altbaslik"];?></p>
+                        <p class="card-text">
+                        <?php if(strlen($kurslar["3"]["altbaslik"])>50): ?>
+                                <?php substr($kurslar["3"]["altbaslik"],0,50);?>
+                                <?php else:?>
+                                    <?php echo $kurslar["3"]["altbaslik"];?>
+                                    <?php endif?>
+                                </p>
                         <p>
+                            <?php if($kurslar["3"]["begeni"]>0): ?>
                             <span class="badge rounded-pill text-bg-primary">
                                 <?php echo $kurslar["3"]["begeni"] ;?>
                          </span>
+                         <?php endif?>
+                         <?php if($kurslar["3"]["yorum"]>0): ?>
                          <span class="badge rounded-pill text-bg-primary">
                                 <?php echo $kurslar["3"]["yorum"] ;?>
                                 
                             </span>
+                            <?php else:?>
+                                <span class="badge rounded-pill text-bg-warning">
+                               ilk yorumu sen yap
+                                
+                            </span> 
+                            <?php endif?>
                         </p>
                     
                     </div>
                 </div>
                 </div>
             </div>
-            <div class="card mb-3">
+                <?php endif ?>
+             <?php if($kurslar["4"]["onay"]): ?>
+                <div class="card mb-3">
                 <div class="row">
                 <div class="col-4">
                     <img src="img/<?php echo $kurslar["4"]["resim"] ;?>" alt=""  class="img-fluid rounded-start">
@@ -199,21 +258,39 @@ $kurs3_url=str_replace([" ",""],["-"],strtolower($kurslar["3"]["baslik"]));
                             <a href="<?php echo $kurs1_url;?>">
                             <?php echo $kurs1_altbaslik;?>
                         </a>
-                        <p class="card-text"><?php echo $kurslar["4"]["altbaslik"];?></p>
+                        <p class="card-text">
+                        <?php if(strlen($kurslar["4"]["altbaslik"])>50): ?>
+                                <?php substr($kurslar["4"]["altbaslik"],0,50);?>
+                                <?php else:?>
+                            <?php echo $kurslar["4"]["altbaslik"];?>
+                            <?php endif?>
+                        </p>
                         <p>
+                            <?php if($kurslar["4"]["begeni"]>0): ?>
                             <span class="badge rounded-pill text-bg-primary">
                                 <?php echo $kurslar["4"]["begeni"] ;?>
                          </span>
-                         <span class="badge rounded-pill text-bg-primary">
+                            <?php endif?>
+                            <?php if($kurslar["4"]["yorum"]>0): ?>
+                         <span class="badge rounded-pill text-bg-danger">
                                 <?php echo $kurslar["4"]["yorum"] ;?>
                                 
                             </span>
+                            <?php else:?>
+                                <span class="badge rounded-pill text-bg-warning">
+                               ilk yorumu sen yap
+                                
+                            </span> 
+                            
+                            <?php endif ?>
                         </p>
                     
                     </div>
                 </div>
                 </div>
             </div>
+                <?php endif?>
+            
         </div>
     </div>
        
