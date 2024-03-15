@@ -42,7 +42,7 @@ function emeklilgeKacSeneKaldi($dogumYili,$isim){
     $kalanSure=65-$yas;
 
     if($kalanSure >0){
-       return " $isim, emekliliğe kalan sure $kalanSure";
+    return " $isim, emekliliğe kalan sure $kalanSure";
     }
     else{
         return " $isim, zaten $kalanSure once emekli oldunuz";
@@ -50,6 +50,46 @@ function emeklilgeKacSeneKaldi($dogumYili,$isim){
     }
 
 }
+function kullanici($kelime,$adet){
+    for($i=0;$i<$adet;$i++){
+        echo $kelime."<br>";
+    }
 
+}
+kullanici("Hobbit",10);
+
+function dikdortgenalan($kisaKenar,$uzunKenar){
+    $alan=$kisaKenar*$uzunKenar;
+    echo $alan."<br>";
+
+}
+dikdortgenalan(10,20);
+
+function yaziTura(){
+    $yt=rand(1,100);
+    if($yt<50){
+        echo "tura";
+    }
+    else{
+        echo "yazı";
+    }
+}
+yaziTura()."<br>";
+yaziTura()."<br>";
+yaziTura();
+echo "<br>";
+
+function bolenSayisi($sayi){
+    $tambolenler=array();
+    for($a=2; $a < $sayi;$a++){
+
+        if( $sayi % $a==0){
+        array_push($tambolenler,$a)."<br>";
+    }
+}
+    return$tambolenler;
+}
+
+print_r(bolenSayisi(50))."<br>";
 
 ?>
