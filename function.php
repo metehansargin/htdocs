@@ -92,4 +92,20 @@ function bolenSayisi($sayi){
 
 print_r(bolenSayisi(50))."<br>";
 
+function defaultParametre($name="Bünyamin",$saat=10)
+{
+echo "$name kalk sabah  saat $saat olmuş"."<br>";
+}
+defaultParametre();
+
+$say=array(10,19,81,12);
+function cokluParametre($say){
+$toplam=0;
+foreach($say as $coklu){
+    $toplam +=$coklu;
+}
+echo  $toplam;
+}
+cokluParametre($say);
+
 ?>
