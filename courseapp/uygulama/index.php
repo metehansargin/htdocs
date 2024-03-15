@@ -52,27 +52,45 @@ $yenifilm=array(
 );
 $kurslar["4"]=$yenifilm;
 
+function filmEkleme( &$kurslar,string $baslik,string $altbaslik,string $resim,string $yayintarihi,int $yorumSayisi=0,int $begeniSayisi=0,bool $onay=true ){
+       // global $kurslar;    //yukardaki end ile olan ifadeyi yazmamış olsaydık burasını mecbur yazıcaktık
+    $yeni_kurs[count($kurslar)+1]=array(
+        "baslik"=>$baslik,
+        "altbaslik"=>$altbaslik,
+        "resim"=>$resim,
+        "yayınTarihi"=>$yayintarihi,
+        "yorum"=>$yorumSayisi,
+        "begeni"=>$begeniSayisi,
+        "onay"=>$onay
 
-$kurs1_baslik="Php kursu";
+    );
+    $kurslar=array_merge($kurslar,$yeni_kurs);
+}
+filmEkleme($kurslar,"kurs1 baslık","kurs1 altbaslık ","1.jpg","03.03.2001");
+filmEkleme($kurslar,"kurs2 baslık","kurs2 altbaslık ","2.jpg","03.03.2001");
+filmEkleme($kurslar,"kurs3 baslık","kurs3 altbaslık ","3.jpg","03.03.2001");
+
+
+//$kurs1_baslik="Php kursu";
 $kurs1_altbaslik="Sıfırdan ileri php programlama";
-$kurs1_resim="1.jpg";
-$kurs1_yayinTarihi="01.01.2023";
-$kurs1_yorum="100";
-$kurs1_begeni="300";
+//$kurs1_resim="1.jpg";
+//$kurs1_yayinTarihi="01.01.2023";
+//$kurs1_yorum="100";
+//$kurs1_begeni="300";
 
-$kurs2_baslik="python kursu";
-$kurs2_altbaslik="Sıfırdan ileri pyhton programlama";
-$kurs2_resim="2.jpg";
-$kurs2_yayinTarihi="03.03.2023";
-$kurs2_yorum="200";
-$kurs2_begeni="400";
+//$kurs2_baslik="python kursu";
+//$kurs2_altbaslik="Sıfırdan ileri pyhton programlama";
+//$kurs2_resim="2.jpg";
+//$kurs2_yayinTarihi="03.03.2023";
+//$kurs2_yorum="200";
+//$kurs2_begeni="400";
 
 $kurs3_baslik="Node.js kursu";
-$kurs3_altbaslik="Sıfırdan ileri Node.js programlama";
-$kurs3_resim="IMG_3560.jpg";
-$kurs3_yayinTarihi="05.05.2023";
-$kurs3_yorum="300";
-$kurs3_begeni="300";
+//$kurs3_altbaslik="Sıfırdan ileri Node.js programlama";
+//$kurs3_resim="IMG_3560.jpg";
+//$kurs3_yayinTarihi="05.05.2023";
+//$kurs3_yorum="300";
+//$kurs3_begeni="300";
 
 // $kurs1_altbaslik=ucfirst(strtolower($kurslar["1"]["altbaslik"]));
 // $kurs2_altbaslik=ucfirst(strtolower($kurslar["2"]["altbaslik"]));
@@ -82,9 +100,23 @@ $kurs3_begeni="300";
 // $kurs2_altbaslik=substr($kurs2_altbaslik,0,30)."...";
 // $kurs3_altbaslik=substr($kurs3_altbaslik,0,30)."...";
 
-$kurs1_url=str_replace([" ",""],["-"],strtolower($kurslar["1"]["baslik"]));
-$kurs2_url=str_replace([" ",""],["-"],strtolower($kurslar["2"]["baslik"]));
-$kurs3_url=str_replace([" ",""],["-"],strtolower($kurslar["3"]["baslik"]));
+function urlDuzenle($baslik){
+return str_replace([" ",""],["-"],strtolower($baslik));
+
+}
+function kisaAcıklama($altBaslik){
+    if(strlen($altBaslik)>50){
+    return substr($altBaslik,0,50);
+
+    }
+    else{
+        return $altBaslik;
+    }
+        
+        
+
+}
+
 ?>
 
 <!DOCTYPE htmre
@@ -123,16 +155,13 @@ $kurs3_url=str_replace([" ",""],["-"],strtolower($kurslar["3"]["baslik"]));
                 <div class="col-8">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $kurs["baslik"] ;?><h5>
-                            <a href="<?php echo $kurs1_url;?>">
+                            <a href="<?php urlDuzenle($kurs["baslik"]);?>">
                             <?php echo $kurs1_altbaslik;?>
                         </a>
 
                         <p class="card-text">
-                            <?php if(strlen($kurs["altbaslik"])>50): ?>
-                                <?php substr($kurs["altbaslik"],0,50);?>
-                                <?php else:?>
-                            <?php echo $kurs["altbaslik"];?>
-                            <?php endif?>
+                            <?php echo kisaAcıklama($kurs["altbaslik"]); ?>
+                                
                         </p>
                         <p>
                             <?php if($kurs["begeni"]>0): ?>
