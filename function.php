@@ -104,8 +104,28 @@ $toplam=0;
 foreach($say as $coklu){
     $toplam +=$coklu;
 }
-echo  $toplam;
+echo  $toplam."<br>";
 }
 cokluParametre($say);
 
+function intro(){
+$parametreSayisi=func_num_args();
+    if($parametreSayisi==0){
+        echo "parametre yok";
+    }
+    else{
+        $parametreler=func_get_args();
+        foreach($parametreler as $param){
+            echo $param."<br>";
+        }
+    }
+}
+intro("Türkiye","Almanya","Avusturya");
+
+ //declare(strict_types=1);
+function toplama(int $num1,int $num2,bool $isActive,array $arr,int $num3){
+
+    echo $num1+$num2."<br>";
+}
+toplama(11,19,true,[19,19],12);
 ?>
