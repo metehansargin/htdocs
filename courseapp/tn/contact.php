@@ -1,4 +1,4 @@
-<?php include '_partials/header.php' ?>
+<?php include '_partials/_header.php' ?>
 <main>
     <h1>İletişim</h1>
     <form action="">
@@ -7,4 +7,4 @@
     <button type="sumbit">Gönder</button>
     </form>
 </main>
-    <?php include '_partials/footer.php' ?>
+    <?php include '_partials/_footer.php' ?>
