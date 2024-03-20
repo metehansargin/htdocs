@@ -1,4 +1,5 @@
-<?php include '_partials/header.php' ?>
+<?php $title="anasayfa";?>
+<?php include '_partials/_header.php' ?>
 <main>
     <h1>En Çok Satan Oyunlar</h1>
     <ul>
@@ -8,4 +9,4 @@
         <li>Samsung S25</li>
     </ul>
 </main>
-<?php include '_partials/footer.php' ?>
+<?php include '_partials/_footer.php' ?>

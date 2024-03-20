@@ -1,11 +1,9 @@
-<?php include '_partials/header.php' ?>
+<?php require '_partials/_variables.php'?>
+<?php include '_partials/_header.php' ?>
 <main>
     <h1>Ürün Listesi</h1>
     <ul>
-        <li>Samsung S22</li>
-        <li>Samsung S23</li>
-        <li>Samsung S24</li>
-        <li>Samsung S25</li>
+        <?php include '_partials/_urunler.php' ?>
     </ul>
     <nav>
         <a href="">1</a>
@@ -14,4 +12,4 @@
         <a href="">4</a>
     </nav>
 </main>
-<?php include '_partials/footer.php' ?>
+<?php include '_partials/_footer.php' ?>
