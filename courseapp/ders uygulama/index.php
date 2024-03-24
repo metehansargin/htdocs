@@ -37,11 +37,12 @@
         #buton{
             width:200px;
             height:100px;
-            padding:5px;
+            padding:20px;
             color:#000;
             text-align:justify;
             position: absolute;
-            right: 60px;
+            right: 100px;
+            top: 10px;
             margin: 500px 0;
         }
     </style>
@@ -74,10 +75,10 @@
         <h2>its quick and easy</h2>
     </div>
     <div class="" id="buton">
-    <input height="" type="text" name="" id=""><pre></pre>
-    <input height="" type="text" name="" id=""><pre></pre>
-    <input height="" type="text" name="" id=""><pre></pre>
-    <input height="" type="text" name="" id=""><pre></pre>
+    <input height="" type="text" name="" id="" size="40px"><pre></pre>
+    <input height="" width="10px" type="text" name="" id="" size="40px"><pre></pre>
+    <input height="" type="text" name="" id="" size="40px"><pre></pre>
+    <input height="" type="text" name="" id="" size="40px"><pre></pre>
     <br></br>
     <button  type="sumbit">Log In</button>
 
