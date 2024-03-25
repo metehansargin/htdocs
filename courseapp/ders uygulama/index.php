@@ -14,6 +14,16 @@
         body{
             background-color: #C0C0C0;
         }
+        .header{
+            width:300px;
+            height:300px;
+            padding:5px;
+            color:#000;
+            text-align:justify;
+            position: absolute;
+            left: 20px;
+            top: -4px;
+        }
         #kutu {
             width:600px;
             height:600px;
@@ -49,14 +59,20 @@
 </head>
 <body>
     <div class="blue-rectangle">
-    <h2 align="left">Cirsus Analysis</h2>
+        
     <form align="right"  action="">
+        <h1></h1>
     <input height=""  type="text" name="" id="">
     <input type="text" name="" id="">
     <button  type="sumbit">Log In</button>
     </form>
-
     </div>
+    <div class="header">
+    <h2 align="left">Cirsus Analysis</h2>
+    <h3 align="left">Sumbit log in </h3>
+    </div>
+
+    
 
     <div class="left-content" id="kutu">
         Hello...Welcome to Circuit Analysis Platform... 
@@ -80,7 +96,7 @@
     <input height="" type="text" name="" id="" size="40px"><pre></pre>
     <input height="" type="text" name="" id="" size="40px"><pre></pre>
     <br></br>
-    <button  type="sumbit">Log In</button>
+    <button  type="sumbit"  >Log In</button>
 
     </div>
     
