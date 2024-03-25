@@ -58,7 +58,7 @@
     </style>
 </head>
 <body>
-    <div class="blue-rectangle">
+    <div class="blue-rectangle" class="col-12">
         
     <form align="right"  action="">
         <h1></h1>

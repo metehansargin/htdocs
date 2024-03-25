@@ -1,3 +1,11 @@
+<?php
+if(!empty($_GET['q'])){
+$keyword=$_GET['q'];
+$kurslar=array_filter($kurslar,function($kurs)use ($keyword){
+    return stristr($kurs['baslik'],$keyword)or(stristr($kurs['altbaslik'],$keyword));
+});
+}
+?>
 <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
 <div class="container">
     <a href="/" class="navbar-brand">CourseApp</a>
@@ -7,6 +15,14 @@
         </li>
         <li class="navbar-item">
             <a href="/" class="nav-link">Kurslar</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav me-2">
+        <li class="navbar-item">
+            <a href="login.php" class="nav-link active ">Login</a>
+        </li>
+        <li class="navbar-item">
+            <a href="register.php" class="nav-link">Register</a>
         </li>
     </ul>
 </div>
