@@ -38,8 +38,8 @@ echo "</pre>";
 
     <div class="row">
         <div class="col-12">
-             <form action="register.php" method="post">
-             <div class="class-mb3">
+            <form action="register.php" method="post">
+            <div class="class-mb3">
                     <label for="username">Kullanıcı Adı</label>
                     <input type="text" name="username" class="form-control">
                 </div>

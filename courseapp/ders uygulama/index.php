@@ -99,6 +99,52 @@
     <button  type="sumbit"  >Log In</button>
 
     </div>
+
+    
     
 </body>
-</html>
+
+<?php
+/*
+$baglanti = new mysqli("localhost", "root", "", "veritaban");
+
+if ($baglanti->connect_errno > 0) {
+    die("<b>Bağlantı Hatası:</b> " . $baglanti->connect_error);
+}
+
+$baglanti->set_charset("utf8");
+
+$sorgu = $baglanti->query("SELECT * FROM email");
+
+if ($baglanti->errno > 0) {
+    die("<b>Sorgu Hatası:</b> " . $baglanti->error);
+}
+
+$cikti = $sorgu->fetch_array();
+
+echo "Adı: " . $cikti["email"] . "<br /> " . $cikti["password"] . "<br />  " . $cikti["job"];
+
+$sorgu->close();
+$baglanti->close();
+*/
+
+
+$connect=mysqli_connect("localhost","root","","veritaban");
+if (!$connect) {
+    echo "baglanmadı";
+}
+else{
+echo "baglandi";
+}
+$quer="select * from email";
+
+$sonuc=mysqli_query($connect,$quer);
+
+
+
+while($row=mysqli_fetch_array($sonuc)){
+echo "</br>";
+echo $row["email"]." ".$row["password"]." ".$row["job"];
+}
+mysqli_close($connect);
+?>
