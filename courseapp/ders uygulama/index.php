@@ -60,11 +60,13 @@
 <body>
     <div class="blue-rectangle" class="col-12">
         
-    <form align="right"  action="">
+    <form align="right" method="POST">
         <h1></h1>
-    <input height=""  type="text" name="" id="">
-    <input type="text" name="" id="">
+    <form id="form1" name="form1" method="POST" >
+    <input height=""  type="text" name="metehan" id="">
+    <input type="password" name="sargın" id="">
     <button  type="sumbit">Log In</button>
+    </form>
     </form>
     </div>
     <div class="header">
@@ -99,10 +101,10 @@
     <button  type="sumbit"  >Log In</button>
 
     </div>
-
     
     
 </body>
+
 
 <?php
 /*
@@ -139,12 +141,23 @@ echo "baglandi";
 $quer="select * from email";
 
 $sonuc=mysqli_query($connect,$quer);
-
+$checkM="";
+$checkM=@$_POST["metehan"];
+$checkP="";
+$checkP=@$_POST["sargın"];
 
 
 while($row=mysqli_fetch_array($sonuc)){
+    if($checkM==$row["email"]&&$checkP==$row["password"]){
+        header("Location:yeni1.php");
+    }
+    else{
+
+    }
 echo "</br>";
 echo $row["email"]." ".$row["password"]." ".$row["job"];
+echo "<br>"."email:".$row["email"];
 }
+
 mysqli_close($connect);
 ?>
