@@ -145,11 +145,13 @@ $checkM="";
 $checkM=@$_POST["metehan"];
 $checkP="";
 $checkP=@$_POST["sargın"];
-
+$loggedIn = false;
 
 while($row=mysqli_fetch_array($sonuc)){
     if($checkM==$row["email"]&&$checkP==$row["password"]){
-        header("Location:yeni1.php");
+        //header("Location:yeni1.php");
+        $loggedIn = true;
+        break;
     }
     else{
 
@@ -157,6 +159,16 @@ while($row=mysqli_fetch_array($sonuc)){
 echo "</br>";
 echo $row["email"]." ".$row["password"]." ".$row["job"];
 echo "<br>"."email:".$row["email"];
+}
+
+
+if($loggedIn){
+    echo "Giriş başarılı!";
+    // Cookie oluşturma
+    setcookie("user", $checkM, time() + (86400 * 30), "/"); // Cookie 30 gün boyunca saklanacak
+    header("Location: yeni1.php"); // Kullanıcıyı yönlendir
+} else {
+    echo "Hatalı giriş bilgileri!";
 }
 
 mysqli_close($connect);
